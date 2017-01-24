@@ -6,24 +6,32 @@ import CourseFrom from './CourseForm';
 
 class ManageCoursePage extends React.Component {
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
     this.state = {
       course: Object.assign({}, this.props.initialCourse),
       errors: {}
-    }
+    };
+
+    this.updateCourseState = this.updateCourseState.bind(this);
+  }
+
+  updateCourseState(event) {
+    const field = event.target.name;
+    let course = this.state.course;
+    course[field] = event.target.value;
+    return this.setState({course});
   }
 
   render() {
     return (
       <CourseFrom
-        allAuthors={[]}
+        allAuthors={this.props.authors}
+        onChange={this.updateCourseState}
         course={this.state.course}
         errors={this.state.errors}/>
-    )
+    );
   }
 }
-
-
 
 
 ManageCoursePage.propTypes = {
@@ -52,4 +60,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage)
+export default connect(mapStateToProps, mapDispatchToProps)(ManageCoursePage);

@@ -18,7 +18,7 @@ const CourseInput = ({name, label, error, placeholder, value, onChange }) => {
           placeholder={placeholder}
           value={value}
           onChange={onChange}/>
-        {error && <div className="alert alert-danger">{error}</div> };
+        {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>
   );
