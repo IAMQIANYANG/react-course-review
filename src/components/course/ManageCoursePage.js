@@ -27,13 +27,22 @@ class ManageCoursePage extends React.Component {
 
 
 ManageCoursePage.propTypes = {
-  initialCourse: PropTypes.object.isRequired
+  initialCourse: PropTypes.object.isRequired,
+  authors: PropTypes.array.isRequired
 };
 
 function mapStateToProps(state, ownProps) {
   let course = {id: '', watchHref: '', title: '', authorId: '', length: '', category: ''};
+  const authorsFormattedForDropDown = state.authors.map(author => {
+    return {
+      value: author.id,
+      text: author.firstName + ' ' + author.lastName
+    };
+  });
+
   return {
-    initialCourse: course
+    initialCourse: course,
+    authors: authorsFormattedForDropDown
   };
 }
 
