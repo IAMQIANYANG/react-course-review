@@ -7,7 +7,7 @@ export default function authorReducer(state = initialState.authors, action) {
       return action.authors;
 
     default:
-      return state
+      return state;
 
   }
 }
